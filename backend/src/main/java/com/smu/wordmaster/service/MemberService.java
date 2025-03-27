@@ -1,11 +1,9 @@
 package com.smu.wordmaster.service;
-
 import com.smu.wordmaster.dto.MemberDTO;
 import com.smu.wordmaster.entity.MemberEntity;
 import com.smu.wordmaster.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +11,6 @@ import java.util.Optional;
 @Service //스프링이 관리해주는 객체 == 스프링 빈
 @RequiredArgsConstructor //controller와 같이. final 멤버변수 생성자 만드는 역할
 public class MemberService {
-
     private final MemberRepository memberRepository; // 먼저 jpa, mysql dependency 추가
 
     public void save(MemberDTO memberDTO) {
@@ -52,5 +49,17 @@ public class MemberService {
         }
         return memberDTOList;
 
+    }
+    // id 검색
+    public MemberDTO findById(Long id) {
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(id);     // 하나 조회할때 optional로 감싸줌
+        if (optionalMemberEntity.isPresent()){   // optional을 벗겨내서 entity -> dto 변환
+            return MemberDTO.toMemberDTO(optionalMemberEntity.get());
+        }
+        else {return null;}
+    }
+    // id 검색 후 삭제
+    public void deleteByid(Long id) {
+        memberRepository.deleteById(id);
     }
 }
