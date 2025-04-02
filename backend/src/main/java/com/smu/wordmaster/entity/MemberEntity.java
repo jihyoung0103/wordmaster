@@ -18,8 +18,10 @@ public class MemberEntity { //table 역할
 
     @Column(unique = true)          // memberEmail이라는 어트리뷰트 추가 (중복 X)
     private String memberEmail;
+
     @Column                         // memberPassword라는 어트리뷰트 추가
     private String memberPassword;
+
     @Column                         // memberName이라는 어트리뷰트 추가
     private String memberName;
 

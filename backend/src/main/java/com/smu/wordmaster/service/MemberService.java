@@ -20,6 +20,14 @@ public class MemberService {
         //Repository의 save메서드 호출 (조건. entity객체를 넘겨줘야 함)
 
     }
+    /**
+     * loginId 중복 체크
+     * 회원가입 기능 구현 시 사용
+     * 중복되면 true return
+     */
+    public boolean checkLoginIdDuplicate(String memberEmail) {
+        return memberRepository.existsBymemberEmail(memberEmail);
+    }
     public MemberDTO login(MemberDTO memberDTO){ //entity객체는 service에서만
         Optional<MemberEntity> byMemberEmail = memberRepository.findByMemberEmail(memberDTO.getMemberEmail());
         if(byMemberEmail.isPresent()){
@@ -30,11 +38,10 @@ public class MemberService {
                 //entity -> dto 변환 후 리턴
                 MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
                 return dto;
-            } else {
-                //비밀번호 불일치
-                return null;
             }
-        } else {
+            else {return null;}
+        }
+        else {
             // 조회 결과가 없다
             return null;
         }
