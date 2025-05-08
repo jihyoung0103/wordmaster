@@ -15,7 +15,7 @@ public class MemberDTO { //회원 정보를 필드로 정의
     private String memberEmail;
     private String memberPassword;
     private String memberName;
-    private MemberRole role;
+    private MemberRole memberRole;
 
     public static MemberDTO toMemberDTO(MemberEntity memberEntity){
         MemberDTO memberDTO = new MemberDTO();
@@ -23,7 +23,7 @@ public class MemberDTO { //회원 정보를 필드로 정의
         memberDTO.setMemberEmail(memberEntity.getMemberEmail());
         memberDTO.setMemberName(memberEntity.getMemberName());
         memberDTO.setMemberPassword(memberEntity.getMemberPassword());
-        memberDTO.setRole(memberEntity.getMemberRole());
+        memberDTO.setMemberRole(memberEntity.getMemberRole());
         return memberDTO;
     }
 }

@@ -45,6 +45,7 @@ public class MemberController {
         if (loginResult != null) {
             session.setAttribute("loginEmail", loginResult.getMemberEmail());
             session.setAttribute("loginName", loginResult.getMemberName());
+            session.setAttribute("loginRole", loginResult.getMemberRole());
             return "session"; // session으로 이동
         }
         // login 실패 시, 로그인 화면에 머뭄

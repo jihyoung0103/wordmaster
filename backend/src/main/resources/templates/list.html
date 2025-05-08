@@ -9,9 +9,10 @@
 <table>
   <tr>
     <th>id</th>
-    <th>memberEmail</th>
-    <th>memberPassword</th>
-    <th>memberName</th>
+    <th>이메일</th>
+    <th>비밀번호</th>
+    <th>사용자이름</th>
+    <th>권한</th>
     <th>상세조회</th>
     <th>삭제</th>
   </tr>
@@ -20,6 +21,7 @@
     <td th:text="${member.memberEmail}"></td>
     <td th:text="${member.memberPassword}"></td>
     <td th:text="${member.memberName}"></td>
+    <td th:text="${member.memberRole}"></td>
     <td>
       <!-- query string /member?id=1
           rest api /member/1 -->
