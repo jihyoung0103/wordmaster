@@ -1,5 +1,2 @@
 package com.smu.wordmaster.role;
-
-public enum MemberRole {
-    USER, ADMIN;
-}
+public enum MemberRole {USER, ADMIN}

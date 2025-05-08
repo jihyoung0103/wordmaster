@@ -1,5 +1,6 @@
 package com.smu.wordmaster.dto;
 import com.smu.wordmaster.entity.MemberEntity;
+import com.smu.wordmaster.role.MemberRole;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ public class MemberDTO { //회원 정보를 필드로 정의
     private String memberEmail;
     private String memberPassword;
     private String memberName;
+    private MemberRole role;
 
     public static MemberDTO toMemberDTO(MemberEntity memberEntity){
         MemberDTO memberDTO = new MemberDTO();
@@ -21,7 +23,7 @@ public class MemberDTO { //회원 정보를 필드로 정의
         memberDTO.setMemberEmail(memberEntity.getMemberEmail());
         memberDTO.setMemberName(memberEntity.getMemberName());
         memberDTO.setMemberPassword(memberEntity.getMemberPassword());
-
+        memberDTO.setRole(memberEntity.getMemberRole());
         return memberDTO;
     }
 }
