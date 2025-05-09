@@ -27,11 +27,11 @@ public class MakeInitData {
         }
 
         // 일반 사용자 계정이 없다면 생성
-        if (!memberRepository.existsByMemberEmail("user@smu.ac.kr")) {
+        if (!memberRepository.existsByMemberEmail("user")) {
             MemberEntity user = new MemberEntity();
-            user.setMemberEmail("user@smu.ac.kr");
+            user.setMemberEmail("user");
             user.setMemberName("일반유저");
-            user.setMemberPassword("user1234");
+            user.setMemberPassword("1234");
             user.setMemberRole(MemberRole.USER);
             memberRepository.save(user);
         }

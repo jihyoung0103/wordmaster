@@ -1,23 +1,62 @@
- <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            width: 200px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<h1> Home Page!</h1>
-<!-- 로그인 상태에 따라 다른 문구 출력 -->
-<p th:text = "${message}"></p>
 
-<a href="/member/save">회원가입</a><div>
-    <!-- 로그인된 상태에서만 로그아웃 버튼을 표시 -->
-    <a href="/member/logout" th:if="${isLoggedIn}">로그아웃</a>
+<h1>Home Page!</h1>
+<p th:text="${message}">로그인 상태 메시지 출력</p>
 
-    <!-- 로그인되지 않은 상태에서는 로그인 버튼만 표시 -->
-    <a href="/member/login" th:unless="${isLoggedIn}">로그인</a>
+<div class="button-container">
+    <a href="/member/save" class="btn" th:unless="${isLoggedIn}">회원가입</a>
+    <a href="/member/logout" class="btn" th:if="${isLoggedIn}">로그아웃</a>
+    <a href="/member/login" class="btn" th:unless="${isLoggedIn}">로그인</a>
+    <a href="/member/" class="btn">회원목록</a>
+    <a href="/member/session" class="btn" th:if="${isLoggedIn}">로그인정보</a>
 </div>
-<a href="/member/">회원목록</a>
-<a href="/member/session">로그인 정보</a>
 
 </body>
 </html>

@@ -25,11 +25,18 @@ public class MemberController {
 
 // 회원가입 양식을 받아서 memberDTO에 저장 후
     @PostMapping("/member/save") // Post 요청이 오면 실행됨
-    public String save(@ModelAttribute MemberDTO memberDTO) {
+    public String save(@ModelAttribute MemberDTO memberDTO, Model model) {
         System.out.println("MemberController.save");
         System.out.println("memberDTO = " + memberDTO);
-        memberService.save(memberDTO);
-        return "home";
+        try {
+            memberService.save(memberDTO);
+            model.addAttribute("message", "회원가입이 완료되었습니다!");
+            return "redirect:/";  // 홈 페이지로 리디렉션
+        } catch (IllegalArgumentException e) {
+            // 이메일 중복 등 예외가 발생했을 때
+            model.addAttribute("message", e.getMessage());
+            return "save";  // 실패 시 회원가입 페이지로 돌아갑니다.
+        }
     }
     @GetMapping("/member/login")
     public String loginForm(){

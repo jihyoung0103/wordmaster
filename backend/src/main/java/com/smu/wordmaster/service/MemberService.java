@@ -14,6 +14,9 @@ public class MemberService {
     private final MemberRepository memberRepository; // 먼저 jpa, mysql dependency 추가
 
     public void save(MemberDTO memberDTO) {
+        if (checkLoginIdDuplicate(memberDTO.getMemberEmail())) {
+            throw new IllegalArgumentException("이미 사용 중인 이메일입니다.");
+        }
         // repsitory의 save 메서드 호출
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberDTO);
         memberRepository.save(memberEntity);

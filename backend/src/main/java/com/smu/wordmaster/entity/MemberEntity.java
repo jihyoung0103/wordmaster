@@ -19,6 +19,7 @@ public class MemberEntity { //table 역할
     @Column // 이름
     private String memberName;
     @Column // 역할
+    @Enumerated(EnumType.STRING)
     private MemberRole memberRole;
 
     // 객체 하나 만들어서 MemberEntity의 엔티티로 만들어주는 메서드
