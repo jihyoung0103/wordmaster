@@ -39,9 +39,7 @@ public class MemberController {
         }
     }
     @GetMapping("/member/login")
-    public String loginForm(){
-        return "login";
-    }
+    public String loginForm(){return "login";}
 
 // 로그인
     @PostMapping("/member/login") // session : 로그인 유지
